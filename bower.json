@@ -1,0 +1,21 @@
+{
+  "name": "contatos",
+  "description": "",
+  "main": "index.js",
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "authors": [
+    "WilliamFRosa <w-fernandes1@hotmail.com>"
+  ],
+  "dependencies": {
+    "angular": "^1.4.7"
+  }
+}
