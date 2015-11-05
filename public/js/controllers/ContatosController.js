@@ -31,6 +31,11 @@ controller('ContatosController',
 			"_id": 5,
 			"nome": "Contato Angular 5",
 			"email": "cont5@empresa.com.br"
+		},
+		{
+			"_id": 6,
+			"nome": "Contato Angular 6",
+			"email": "cont6@empresa.com.br"
 		}
 	];
 	
