@@ -1,43 +1,38 @@
 angular.module('contatos').
 controller('ContatosController', 
-	function($scope){
-		$scope.total = 0;
-		$scope.incrementa = function(){
-			$scope.total++;
-		};
+	function(Contato, $scope){
 		
-	$scope.contatos = [
-		{
-			"_id": 1,
-			"nome": "Contato Angular 1",
-			"email": "cont1@empresa.com.br"
-		},
-		{
-			"_id": 2,
-			"nome": "Contato Angular 2",
-			"email": "cont2@empresa.com.br"
-		},
-		{
-			"_id": 3,
-			"nome": "Contato Angular 3",
-			"email": "cont3@empresa.com.br"
-		},
-		{
-			"_id": 4,
-			"nome": "Contato Angular 4",
-			"email": "cont4@empresa.com.br"
-		},
-		{
-			"_id": 5,
-			"nome": "Contato Angular 5",
-			"email": "cont5@empresa.com.br"
-		},
-		{
-			"_id": 6,
-			"nome": "Contato Angular 6",
-			"email": "cont6@empresa.com.br"
+		$scope.contatos = [];
+		
+		$scope.filtro = '';
+		
+		$scope.mensagem = {texto: ''};
+		
+		function buscaContatos(){
+			Contato.query(
+				function(contatos){
+					$scope.contatos = contatos;
+					$scope.mensagem = {};
+				},
+				function(erro){
+					console.log(erro);
+					$scope.mensagem = {
+						texto: 'Não foi possivel obter a lista de contatos'
+					};
+				}
+			);
 		}
-	];
-	
-	$scope.filtro ='';
+		buscaContatos();
+		
+		$scope.remove = function(contato){
+			Contato.delete({id: contato._id},
+			buscaContatos,
+			function (erro) {
+				$scope.mensagem = {
+				texto: 'Não foi possivel remover o contato'
+				};
+				console.log(erro);
+			}
+		);
+	};
 });
